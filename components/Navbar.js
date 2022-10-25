@@ -1,25 +1,42 @@
 import Link from 'next/link'
-import {useState} from 'react'
+import { useState, useEffect} from 'react'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai' 
 
 const Navbar = () => {
   //nav state
   const [nav, setNav] = useState(false)
+  const [color, setColor] = useState('transparent')
+  const [text, setTextColor] = useState('white')
 
 
   //handle nav click
   const handleNavClick = () => {
     setNav((prev) => !prev)
-
-    console.log(nav)
   }
+
+  useEffect(() => {
+    const changeColor = () => {
+      if(window.scrollY >= 90){
+        setColor('#ffff')
+        setTextColor('#0000')
+      } else {
+        setColor('transparent')
+        setTextColor('#ffff')
+      }
+    }
+
+    window.addEventListener('scroll', changeColor)
+
+  }, [])
+
+
   return (
-    <div className='fixed left- top-0 w-full z-10 ease-in duration-300'>
+    <div style={{backgroundColor: `${color}`}} className='fixed left- top-0 w-full z-10 ease-in duration-300'>
       <div className='max-w-[1240px] margin-auto flex justify-between items-center p-4 text-white'>
         <Link href="/">
-        <h1 className='font-bold text-4xl'>Capture</h1>
+        <h1 style={{color: `${text}`}} className='font-bold text-4xl'>Capture</h1>
         </Link>
-        <ul className='hidden sm:flex'>
+        <ul style={{color: `${text}`}} className='hidden sm:flex'>
           <li className='p-4'>
             <Link href="/Home">Home</Link>
           </li>
@@ -35,7 +52,7 @@ const Navbar = () => {
         </ul>
 
         <div className='block sm:hidden z-10' onClick={handleNavClick}>
-          {nav? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
+          {nav? <AiOutlineClose size={20} style={{color: `${text}`}}/> : <AiOutlineMenu size={20} style={{color: `${text}`}}/>}
   
         </div>
         <div className={nav ? 'absolute top-0 left-0 right-0 bottm-0 flex justify-center items-center w-screen h-screen bg-black text-center ease-ing duration-300 sm:hidden' : 'absolute top-0 left-[-100%] right-0 bottm-0 flex justify-center items-center w-screen h-screen bg-black text-center ease-ing duration-300 sm:hidden'}>
