@@ -9,7 +9,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-     <Hero/>
+     <Hero heading="Next App" message="This is a next app "/>
  
     </div>
   )
