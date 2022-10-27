@@ -1,5 +1,7 @@
 import Head from 'next/head'
 import Hero from '../components/Hero'
+import Slider from '../components/Slider'
+import  { SliderData } from '../components/SliderData'
 export default function Home() {
   return (
     <div >
@@ -10,6 +12,7 @@ export default function Home() {
       </Head>
 
      <Hero heading="Next App" message="This is a next app "/>
+     <Slider slides={SliderData}/>
  
     </div>
   )
