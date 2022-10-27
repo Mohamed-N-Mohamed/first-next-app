@@ -24,30 +24,18 @@ if(!Array.isArray(slides) || slides.length <= 0) {
 
   return (
     <div id='gallery' className='max-w-[1240px] mx-auto'>
-      <h1>Gallery</h1>
+      <h1 className='test-2xl font-bold text-center'>Gallery</h1>
       <div className='relative flex justify-center p-4'>
-
         {SliderData.map((slides, index) => (
-          <div className={index === current? 'opacity-[1] ease-in duratin-1000' : 'opacity-0' } key={index} >
-
-           
-              
-           <FaArrowCircleLeft size={50} className='absolute top-[50%] left-[30px] text-white/70 cursor-pointer select-none z-[2]' />
+          <div className={index === current? 'opacity-[1] ease-in duratin-1000' : 'opacity-0' } key={index} >    
+           <FaArrowCircleLeft size={50} className='absolute top-[50%] left-[30px] text-white/70 cursor-pointer select-none z-[2]' onClick={prevSlides}/>
            
             {index === current && (
               <Image src={slides.image} alt="" width='1440' height='600' objectFit='cover'/>
             )}
 
-<FaArrowCircleRight size={50} className='absolute top-[50%] right-[30px]  cursor-pointer select-none z-[2]  text-white/70 ' />
-
-
-
-          
-
-
-   
-          </div>
-
+<FaArrowCircleRight size={50} className='absolute top-[50%] right-[30px]  cursor-pointer select-none z-[2]  text-white/70 ' onClick={nextSlides}/>
+             </div>
         ))}
       </div>
 
